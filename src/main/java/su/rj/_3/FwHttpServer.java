@@ -1,6 +1,8 @@
 package su.rj._3;
 
-import com.sun.net.httpserver.*;
+import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.HttpContext;
+import com.sun.net.httpserver.HttpHandler;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
