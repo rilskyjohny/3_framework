@@ -12,9 +12,11 @@ import java.util.logging.Logger;
 public abstract class FwHttpServer implements Server<HttpServer> {
     private HttpServer srv;
     Logger logger;
+    private ServerStates state;
     public FwHttpServer(@NotNull InetSocketAddress addr){
         try {
-            this.srv= HttpServer.create(addr,10);
+            state=ServerStates.VALID;
+            this.srv = HttpServer.create(addr,10);
         } catch (IOException e) {
             if(this.handle(e)){
                 throw new RuntimeException(e);
@@ -44,12 +46,25 @@ public abstract class FwHttpServer implements Server<HttpServer> {
     //TODO:Replace by a more secure analog.
     @Deprecated
     public HttpContext createContext(String where, HttpHandler ctx){
-        return this.srv.createContext(where, ctx);
+        try {
+            return this.srv.createContext(where, ctx);
+        } catch (NullPointerException e) {
+            this.state=ServerStates.INVALID;
+            if(handle(e))
+                throw new RuntimeException(e);
+            return null;
+        }
     }
 
     public void bind(@NotNull su.rj._3.HttpHandler handler){
         for(String s:handler.getRelAddressList()){
-            this.srv.createContext(s,handler);
+            try {
+                this.srv.createContext(s, handler);
+            } catch (NullPointerException e) {
+                this.state=ServerStates.INVALID;
+                if(handle(e))
+                    throw new RuntimeException(e);
+            }
         }
     }
 
@@ -62,6 +77,11 @@ public abstract class FwHttpServer implements Server<HttpServer> {
     //TODO:Replace by a more secure analog.
     //@Deprecated(forRemoval = true)
     public HttpServer getSrv() {
+        this.state = ServerStates.DESTRUCTIBLE;
         return srv;
+    }
+
+    public ServerStates getState() {
+        return state;
     }
 }
