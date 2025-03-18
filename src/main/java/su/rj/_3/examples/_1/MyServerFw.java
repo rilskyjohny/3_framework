@@ -18,6 +18,6 @@ public class MyServerFw extends FwHttpServer {
 
     @Override
     protected boolean handle(@NotNull Throwable e) {
-        return false;
+        return true;
     }
 }
