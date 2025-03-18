@@ -62,9 +62,12 @@ public abstract class FwHttpServer implements Server<HttpServer> {
         }
     }
 
-    public void bind(@NotNull su.rj._3.HttpHandler handler){
+    public void bindHandler(@NotNull su.rj._3.HttpHandler handler){
         for(String s:handler.getRelAddressList()){
             try {
+                try {
+                    this.srv.removeContext(s);
+                } catch (IllegalArgumentException ignored){}
                 this.srv.createContext(s, handler);
             } catch (NullPointerException e) {
                 this.state=ServerStates.INVALID;
