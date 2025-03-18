@@ -43,7 +43,13 @@ public abstract class FwHttpServer implements Server<HttpServer> {
         return this.srv.getAddress();
     }
 
-    //TODO:Replace by a more secure analog.
+    /**
+     * Refer to createContext method in {@link com.sun.net.httpserver.HttpServer}.
+     * Deprecated:replace with bind method.
+     * @param where The path to associate with context.
+     * @param ctx The {@link com.sun.net.httpserver.HttpHandler} to associate with context
+     * @return The created HttpContext
+     */
     @Deprecated
     public HttpContext createContext(String where, HttpHandler ctx){
         try {
@@ -74,8 +80,6 @@ public abstract class FwHttpServer implements Server<HttpServer> {
         this.srv.stop(i);
     }
 
-    //TODO:Replace by a more secure analog.
-    //@Deprecated(forRemoval = true)
     public HttpServer getSrv() {
         this.state = ServerStates.DESTRUCTIBLE;
         return srv;
