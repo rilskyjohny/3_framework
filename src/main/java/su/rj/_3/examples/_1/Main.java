@@ -43,6 +43,7 @@ public class Main {
             srv = new MyServerFw(new InetSocketAddress(port),10);
             srv.bindHandler(new MyHandler(new String[]{"/test"}));
             srv.bindHandler(new QuitHandler(new String[]{"/quit"}));
+            srv.bindHandler(new StaticResourceHandler(new String[]{"/"}));
             log.fine(srv.getAddress().toString());
             srv.go();
             Scanner sc = new Scanner(System.in);
