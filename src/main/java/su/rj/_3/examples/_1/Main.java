@@ -41,8 +41,8 @@ public class Main {
         }
         try {
             srv = new MyServerFw(new InetSocketAddress(port),10);
-            srv.createContext("/test",new MyHandler());
-            srv.createContext("/quit",new QuitHandler());
+            srv.bindHandler(new MyHandler(new String[]{"/test"}));
+            srv.bindHandler(new QuitHandler(new String[]{"/quit"}));
             log.fine(srv.getAddress().toString());
             srv.go();
             Scanner sc = new Scanner(System.in);
