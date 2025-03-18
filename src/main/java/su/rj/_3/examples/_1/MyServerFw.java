@@ -5,10 +5,6 @@ import su.rj._3.FwHttpServer;
 import java.net.InetSocketAddress;
 
 public class MyServerFw extends FwHttpServer {
-    public MyServerFw(InetSocketAddress addr) {
-        super(addr);
-    }
-
     public MyServerFw(InetSocketAddress addr, int i) {
         super(addr, i);
     }
