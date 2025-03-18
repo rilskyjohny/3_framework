@@ -1,5 +1,6 @@
 package su.rj._3.examples._1;
 
+import org.jetbrains.annotations.NotNull;
 import su.rj._3.FwHttpServer;
 
 import java.net.InetSocketAddress;
@@ -16,7 +17,7 @@ public class MyServerFw extends FwHttpServer {
     }
 
     @Override
-    protected boolean handle(Throwable e) {
+    protected boolean handle(@NotNull Throwable e) {
         return false;
     }
 }

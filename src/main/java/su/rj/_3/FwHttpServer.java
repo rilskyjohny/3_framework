@@ -36,6 +36,7 @@ public abstract class FwHttpServer implements Server<HttpServer> {
         this.srv.start();
     }
 
+    @NotNull
     public InetSocketAddress getAddress(){
         return this.srv.getAddress();
     }
@@ -46,13 +47,13 @@ public abstract class FwHttpServer implements Server<HttpServer> {
         return this.srv.createContext(where, ctx);
     }
 
-    public void bind(su.rj._3.HttpHandler handler){
+    public void bind(@NotNull su.rj._3.HttpHandler handler){
         for(String s:handler.getRelAddressList()){
             this.srv.createContext(s,handler);
         }
     }
 
-    protected abstract boolean handle(Throwable e);
+    protected abstract boolean handle(@NotNull Throwable e);
 
     public void stop(int i) {
         this.srv.stop(i);
