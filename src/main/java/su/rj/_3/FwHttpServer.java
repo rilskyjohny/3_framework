@@ -41,9 +41,15 @@ public abstract class FwHttpServer implements Server<HttpServer> {
     }
 
     //TODO:Replace by a more secure analog.
-    //@Deprecated(forRemoval = true)
+    @Deprecated
     public HttpContext createContext(String where, HttpHandler ctx){
         return this.srv.createContext(where, ctx);
+    }
+
+    public void bind(su.rj._3.HttpHandler handler){
+        for(String s:handler.getRelAddressList()){
+            this.srv.createContext(s,handler);
+        }
     }
 
     protected abstract boolean handle(Throwable e);
