@@ -5,7 +5,6 @@ import jdk.jfr.Unsigned;
 import su.rj._3.FwHttpServer;
 
 import java.net.InetSocketAddress;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,13 +45,6 @@ public class Main {
             srv.bindHandler(new StaticResourceHandler(new String[]{"/"}));
             log.fine(srv.getAddress().toString());
             srv.go();
-            Scanner sc = new Scanner(System.in);
-            System.out.println("To exit type q. ");
-            while(!sc.next().startsWith("q")){
-                System.out.println("To exit type q, then enter. ");
-            }
-            System.out.println("Stopping. ");
-            srv.stop(1);
         } catch (RuntimeException e) {
             System.err.println("Something wrong with server. ");
             throw new RuntimeException(e);
