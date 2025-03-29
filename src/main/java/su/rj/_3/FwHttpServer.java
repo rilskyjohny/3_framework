@@ -7,11 +7,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public abstract class FwHttpServer implements Server<HttpServer> {
     private HttpServer srv;
-    Logger logger;
+    static Logger logger;
     private ServerStates state;
     public FwHttpServer(@NotNull InetSocketAddress addr){
         try {
@@ -23,7 +26,15 @@ public abstract class FwHttpServer implements Server<HttpServer> {
             }
         }
     }
-
+    static{
+        logger=Logger.getLogger("su.rj._3");
+        logger.setUseParentHandlers(false);
+        final Handler systemOut = new ConsoleHandler();
+        systemOut.setLevel(Level.FINE);
+        logger.addHandler(systemOut);
+        logger.setLevel(Level.FINE);
+        logger.fine("Hi");
+    }
     public FwHttpServer(@NotNull InetSocketAddress addr, int backlog){
         try {
             this.srv= HttpServer.create(addr,backlog);
@@ -32,6 +43,10 @@ public abstract class FwHttpServer implements Server<HttpServer> {
                 throw new ServerError(e);
             }
         }
+    }
+
+    public static Logger getLogger() {
+        return logger;
     }
 
     public void go(){
