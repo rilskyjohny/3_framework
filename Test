@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2025-04-04T06:08:25.497358421Z</date>
+  <millis>1743746905497</millis>
+  <nanos>358421</nanos>
+  <sequence>0</sequence>
+  <logger>su.rj._3</logger>
+  <level>FINE</level>
+  <class>su.rj._3.FwHttpServer</class>
+  <method>&lt;clinit&gt;</method>
+  <thread>1</thread>
+  <message>Hi</message>
+</record>
+<record>
+  <date>2025-04-04T06:08:26.304531548Z</date>
+  <millis>1743746906304</millis>
+  <nanos>531548</nanos>
+  <sequence>1</sequence>
+  <logger>su.rj._3.examples._1.*</logger>
+  <level>FINE</level>
+  <class>su.rj._3.examples._1.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>/[0:0:0:0:0:0:0:0]:8080</message>
+</record>
+<record>
+  <date>2025-04-04T06:08:32.582590777Z</date>
+  <millis>1743746912582</millis>
+  <nanos>590777</nanos>
+  <sequence>2</sequence>
+  <logger>su.rj._3</logger>
+  <level>FINE</level>
+  <class>su.rj._3.examples._1.StaticResourceHandler</class>
+  <method>handle</method>
+  <thread>20</thread>
+  <message>URL get:/, Transposed to /index.html</message>
+</record>
+<record>
+  <date>2025-04-04T06:08:33.121046443Z</date>
+  <millis>1743746913121</millis>
+  <nanos>46443</nanos>
+  <sequence>3</sequence>
+  <logger>su.rj._3</logger>
+  <level>WARNING</level>
+  <class>su.rj._3.examples._1.StaticResourceHandler</class>
+  <method>handle</method>
+  <thread>20</thread>
+  <message>KOI8_R encoding not supported. </message>
+</record>
+<record>
+  <date>2025-04-04T06:08:41.507421994Z</date>
+  <millis>1743746921507</millis>
+  <nanos>421994</nanos>
+  <sequence>4</sequence>
+  <logger>su.rj._3</logger>
+  <level>FINE</level>
+  <class>su.rj._3.examples._1.StaticResourceHandler</class>
+  <method>handle</method>
+  <thread>20</thread>
+  <message>URL get:/, Transposed to /index.html</message>
+</record>
+<record>
+  <date>2025-04-04T06:08:41.536007395Z</date>
+  <millis>1743746921536</millis>
+  <nanos>7395</nanos>
+  <sequence>5</sequence>
+  <logger>su.rj._3</logger>
+  <level>WARNING</level>
+  <class>su.rj._3.examples._1.StaticResourceHandler</class>
+  <method>handle</method>
+  <thread>20</thread>
+  <message>KOI8_R encoding not supported. </message>
+</record>
+</log>
